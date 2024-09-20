@@ -1,5 +1,5 @@
 import {useState} from "react";
-import ListBox from "./ListBox/ListBox";
+import Box from "./ListBox/Box";
 import WatchedBox from "./WatchedBox/WatchedBox";
 
 export default function Main({ children }) {

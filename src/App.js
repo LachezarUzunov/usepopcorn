@@ -3,9 +3,11 @@ import NavBar from "./NavBar/NavBar";
 import Main from "./Main/Main";
 import Search from "./NavBar/Search";
 import NumResults from "./NavBar/NumResults";
-import ListBox from "./Main/ListBox/ListBox";
+import Box from "./Main/ListBox/Box";
 import WatchedBox from "./Main/WatchedBox/WatchedBox";
 import MovieList from "./Main/ListBox/MovieList";
+import Summary from "./Main/WatchedBox/Summary";
+import WatchedMovieList from "./Main/WatchedBox/WatchedMovieList";
 
 export default function App() {
     const tempMovieData = [
@@ -32,8 +34,31 @@ export default function App() {
         },
     ];
 
-    const [movies, setMovies] = useState(tempMovieData);
+    const tempWatchedData = [
+        {
+            imdbID: "tt1375666",
+            Title: "Inception",
+            Year: "2010",
+            Poster:
+                "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+            runtime: 148,
+            imdbRating: 8.8,
+            userRating: 10,
+        },
+        {
+            imdbID: "tt0088763",
+            Title: "Back to the Future",
+            Year: "1985",
+            Poster:
+                "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+            runtime: 116,
+            imdbRating: 8.5,
+            userRating: 9,
+        },
+    ];
 
+    const [movies, setMovies] = useState(tempMovieData);
+    const [watched, setWatched] = useState(tempWatchedData);
   return (
     <>
       <NavBar>
@@ -41,10 +66,14 @@ export default function App() {
           <NumResults movies={movies}/>
       </NavBar>
       <Main>
-          <ListBox>
+          <Box>
               <MovieList movies={movies}/>
-          </ListBox>
-          <WatchedBox />
+          </Box>
+
+          <Box>
+              <Summary watched={watched}/>
+              <WatchedMovieList watched={watched}/>
+          </Box>
       </Main>
     </>
   );
