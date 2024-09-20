@@ -2,11 +2,10 @@ import {useState} from "react";
 import ListBox from "./ListBox/ListBox";
 import WatchedBox from "./WatchedBox/WatchedBox";
 
-export default function Main() {
+export default function Main({ children }) {
     return (
         <main className="main">
-            <ListBox />
-            <WatchedBox />
+            {children}
         </main>
     )
 }
