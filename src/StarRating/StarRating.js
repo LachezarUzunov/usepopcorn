@@ -11,14 +11,21 @@ const startContainerStyle = {
     display: 'flex'
 }
 
-const textStyle = {
-    lineHeight: '1',
-    margin: '0'
-}
-
-const StarRating = ({ maxRating = 5 }) => {
-    const [rating, setRating] = useState(0);
+const StarRating = ({
+                        maxRating = 5,
+                        color = "#fcc419",
+                        size = 48,
+                        messages = [],
+                        defaultRating = 0}) => {
+    const [rating, setRating] = useState(defaultRating);
     const [tempRating, setTemprating] = useState(0)
+
+    const textStyle = {
+        lineHeight: '1',
+        margin: '0',
+        color: color,
+        fontSize: `${size / 1.5}px`
+    }
 
     return (
         <div style={containerStyle}>
@@ -30,10 +37,12 @@ const StarRating = ({ maxRating = 5 }) => {
                         full={tempRating ? tempRating >= i+ 1 : rating >= i + 1}
                         onHoverIn={() => setTemprating(i + 1)}
                         onHoverOut={() => setTemprating(0)}
+                        color={color}
+                        size={size}
                     />
                 ))}
             </div>
-            <p style={textStyle}>{tempRating || rating || ""}</p>
+            <p style={textStyle}>{messages.length === maxRating ? messages[tempRating ? tempRating - 1 : rating - 1] : tempRating || rating || ""}</p>
         </div>
     )
 }

@@ -1,11 +1,11 @@
-const starStyle = {
-    width:'48px',
-    height: '48px',
-    display: 'block',
-    cursor: 'pointer'
-}
+const Star = ({ onRate, full, onHoverIn, onHoverOut, color, size }) => {
+    const starStyle = {
+        width:`${size}px`,
+        height: `${size}px`,
+        display: 'block',
+        cursor: 'pointer',
+    }
 
-const Star = ({ onRate, full, onHoverIn, onHoverOut }) => {
     return (
         <span onClick={onRate} role="button" style={starStyle}
             onMouseEnter={() => onHoverIn}
@@ -14,8 +14,8 @@ const Star = ({ onRate, full, onHoverIn, onHoverOut }) => {
             {full ? <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#000"
+                    viewBox={color}
+                    stroke={color}
                 >
                     <path
                         strokeLinecap="round"
@@ -29,7 +29,7 @@ const Star = ({ onRate, full, onHoverIn, onHoverOut }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="#000"
+                    stroke={color}
                 >
                     <path
                         strokeLinecap="round"
